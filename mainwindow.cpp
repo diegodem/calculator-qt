@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-long currentDisplay = 0;
-long previousNumber = 0;
-long factor = 0;
+double currentDisplay = 0;
+double previousNumber = 0;
+double factor = 0;
 int currentOperation = 0;
 bool eqPressed = false;
 
@@ -87,7 +87,9 @@ void MainWindow::OperationPressed()
         currentOperation = 3;
         break;
     case '/':
-        // TODO
+        previousNumber = currentDisplay;
+        currentDisplay = 0;
+        currentOperation = 4;
         break;
     default:
         break;
@@ -116,7 +118,9 @@ void MainWindow::EqualsPressed()
     case 3:
         currentDisplay = currentDisplay * factor;
         break;
-        // TODO
+    case 4:
+        currentDisplay = currentDisplay / factor;
+        break;
     default:
         break;
     }
